@@ -59,14 +59,18 @@
 		</nav>
 		<div class="container">
 			<div class="row">
-				<div id="Login_Modal" class="modal">
+				<div id="Login_Modal" class="modal text-center">
 					<div class="modal-content">
 					<h4>Login</h4>
 						<div class="col s12">
 							<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-                            <img id ="icon" src="{% static 'images/fb2.jpg' %}" />
-                            <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
-                            <img id ="icon2" src="{% static 'images/g+2.jpg' %}" /></a>      
+                            	<img id ="icon" src="{% static 'images/logo/fb2.jpg' %}" />
+                            </a>
+						</div>
+						<div class="col s12">
+							<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
+                            	<img id ="icon2" src="{% static 'images/logo/g+2.jpg' %}" />
+                            </a>
 						</div>
 					</div>
 				</div>
