@@ -1,5 +1,6 @@
 (function($){
   $(function(){
+    'use strict';
   	function is_touch_device() {
       try {
         document.createEvent("TouchEvent");
@@ -14,17 +15,17 @@
 
     $('.button-collapse').sideNav();
     $('.modal-trigger').leanModal();
-	$(".dropdown-button").dropdown({
-    	constrain_width: false,
+    $(".dropdown-button").dropdown({
+    	constrain_width: true,
      	hover: false,
     });
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
-
-$(document).ready(function(){
-//$('.materialboxed').materialbox();
-//$('.parallax').parallax();
-$('.materialboxed').materialbox();
-$('.collapsible').collapsible();
-});
+    $('.materialboxed').materialbox();
+    $('.collapsible').collapsible();
+    $('select').material_select();
+    $('.datepicker').pickadate({
+      selectMonths: true,
+      selectYears: 90,
+      format: 'mm/dd/yyyy'
+    });
+  });
+})(jQuery);

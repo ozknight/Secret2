@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+			<div class="card">
+				first name : {{ user.first_name }}
+				last name : {{ user.last_name }}
+
+				<form action="" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ form.as_p }}
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
+	{% if user.is_authenticated %}
 	<div class="container">
 		<div class="row">
-			
+			<div class="col md6"></div>
+			<div class="col md6"></div>
 		</div>
 	</div>
+	{% else %}
+	<div class="container">
+		<div class="row">
+			<div class="col m6">
+				<img class="responsive-img" src="{% static 'images/logo3.png' %}" />
+			</div>
+			<div class="col m6"></div>
+		</div>
+	</div>
+	{% endif %}
 {% endblock %}

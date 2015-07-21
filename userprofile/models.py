@@ -53,7 +53,7 @@ class Profile(models.Model):
         return self.employer
 
     def is_Profile_Set(self):
-        if self.is_gender_valid() and self.is_valid_user_age() and self.about_you:
+        if self.is_gender_valid() and self.is_valid_user_age():
             return True
         return False
 

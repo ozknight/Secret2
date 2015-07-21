@@ -27,6 +27,13 @@ urlpatterns = patterns(
         name='homepage'
     ),
     url(
+        r'^(?i)profile/',
+        include(
+            'userprofile.urls',
+            namespace='profile'
+        )
+    ),
+    url(
         r'^admin/',
         include(
             admin.site.urls
