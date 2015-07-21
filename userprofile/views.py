@@ -19,7 +19,7 @@ class ProfileDetailView(generic.TemplateView):
 
 class ProfileUpdateView(generic.UpdateView):
     template_name = 'Profile_Update_View.html'
-    success_url = 'profile/'
+    success_url = '/profile/view'
 
 
 class ProfileCreateView(generic.UpdateView):

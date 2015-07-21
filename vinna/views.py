@@ -9,7 +9,6 @@ class HomepageView(generic.TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = super(HomepageView, self).get_context_data(**kwargs)
-        print request.user.profile.is_Profile_Set()
         if request.user.is_authenticated():
             context['page_title'] = 'Dashboard'
             if not request.user.profile.is_Profile_Set():
