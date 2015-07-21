@@ -14,7 +14,7 @@ urlpatterns = (
         name='edit'
     ),
     url(
-        r'^setup/$',
+        r'^setup/(?P<pk>\d+)$',
         ProfileCreateView.as_view(),
         name='create'
     ),

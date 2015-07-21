@@ -15,7 +15,10 @@ class HomepageView(generic.TemplateView):
             if not request.user.profile.is_Profile_Set():
                 return HttpResponseRedirect(
                     reverse(
-                        'profile:create'
+                        'profile:create',
+                        args=(
+                            request.user.id,
+                        )
                     )
                 )
         else:

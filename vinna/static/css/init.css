@@ -16,3 +16,9 @@
 .modal{
 	padding-bottom: 25px;
 }
+
+.profile-create-btn{
+	display: inherit;
+	margin: 0 auto;
+	margin-top: 15px;
+}

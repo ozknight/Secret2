@@ -3,15 +3,34 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col s12">
-			<div class="card">
-				first name : {{ user.first_name }}
-				last name : {{ user.last_name }}
-
-				<form action="" method="post" enctype="multipart/form-data">
+		<div class="col s12" style="padding:5% 0;">
+			<div class="card black-text">
+				<div class="card-content">
+					<span class="card-title black-text">
+						<i class="mdi-action-account-circle prefix"></i>
+						Profile
+					</span>
+					<br/>
+					<label class="active" for="first_name">First Name</label>
+					<input id="first_name" type="text" value="{{ user.first_name }}" class="validate" disabled>
+					<label class="active" for="last_name">First Name</label>
+					<input id="last_name" type="text" value="{{ user.last_name }}" class="validate" disabled>
+					<form action="" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					{{ form.as_p }}
+					<p>
+				      <input type="checkbox" id="id_employer" name="employer" />
+				      <label for="id_employer">Are You An Employer ?</label>
+				    </p>
+				    <p class="center-align">
+				    	Upon Creating Your Profile You already have read and agree to the Terms of Service
+				    </p>
+					<button class="profile-create-btn center-align btn light-blue waves-effect waves-light" type="submit" name="action">
+						Create
+				    	<i class="mdi-content-send right"></i>
+				  	</button>
 				</form>
+				</div>
 			</div>
 		</div>
 	</div>

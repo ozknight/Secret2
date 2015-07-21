@@ -1,18 +1,21 @@
 from django import forms
 from .models import Profile, GENDER
 
+CUSTOM_BOOLEAN = ((True, 'Yes'), (False, 'No'))
+
 
 class ProfileCreateForm(forms.ModelForm):
 
     ''' Create Profile For User Instance '''
     avatar = forms.ImageField(
-        label=('User Avatar'),
+        label='User Avatar',
         required=False,
         error_messages={
             'invalid': ("Image files only")},
         widget=forms.FileInput(
             attrs={
                 'type': 'image',
+                'class': 'btn',
                 'placeholder': 'Select Avatar'
             }
         )
@@ -27,8 +30,11 @@ class ProfileCreateForm(forms.ModelForm):
         )
     )
     gender = forms.ChoiceField(
-        choices=GENDER,
-        widget=forms.RadioSelect()
+        choices=GENDER, widget=forms.Select(
+            attrs={
+                'placeholder': 'Select A Gender'
+            }
+        )
     )
     phone = forms.CharField(
         widget=forms.TextInput(
@@ -40,7 +46,7 @@ class ProfileCreateForm(forms.ModelForm):
     about_you = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                'class': 'form-control',
+                'class': 'materialize-textarea',
                 'rows': '5'
             }
         )
@@ -48,4 +54,4 @@ class ProfileCreateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        exclude = ('status', 'id', 'user')
+        exclude = ('employer','status', 'id', 'user')
