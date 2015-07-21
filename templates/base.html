@@ -2,20 +2,80 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta name="theme-color" content="#EE6E73">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>{{ page_title }}</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
+		<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+		<link rel="stylesheet" href="{% static 'css/init.css' %}">
 	</head>
 	<body>
-	<!-- Script -->
-	{% block content %}{% endblock %}
-	<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-    <script src="{% static 'js/jquery.timeago.min.js' %}"></script>  
-    <script src="{% static 'js/prism.js' %}"></script>
-    <script src="{% static 'js/materialize.js' %}"></script>
-    <script src="{% static 'js/init.js' %}"></script>
+		<ul id="dropdown1" class="dropdown-content">
+			<li><a href="#!">one</a></li>
+			<li><a href="#!">two</a></li>
+			<li class="divider"></li>
+			<li><a href="#!">three</a></li>
+		</ul>		
+		<nav class="grey darken-2" role="navigation">
+			<div class="nav-wrapper">
+				<div class="valign-demo valign-wrapper left">
+					<a id="logo-container" href="{% url 'homepage' %}" class="brand-logo waves-effect waves-light">
+					<div class="hide-on-med-and-down">
+						<span class="left" style="padding-left:20px;">
+							<img src="{% static 'images/logo/logo.ico' %}" width="36px">
+						</span>
+						<span class="left" style="padding-left:15px;font-size: 0.7em;font-weight:300;">Vinna</span>
+					</div>
+					<div class="hide-on-large-only">
+						<span style="font-size: 0.7em;font-weight:300;">Vinna</span>
+					</div>
+					</a>
+				</div>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a href="{% url 'homepage' %}">Home</a>
+					</li>
+					<li>
+						<a href="badges.html">Job Offers</a>
+					</li>
+					<li>
+						<a href="collapsible.html">Help</a>
+					</li>
+					{% if user.is_authenticated %}
+					<li>
+						<a class="dropdown-button" href="#!" data-activates="dropdown1" href="">
+							User
+						</a>
+					</li>
+					{% else %}
+					<li>
+						<a class="modal-trigger" href="#Login_Modal">Login</a>
+					</li>
+					{% endif %}
+			    </ul>
+				<ul id="nav-mobile" class="right side-nav">
+					
+				</ul>		
+				<a class="button-collapse" href="#" data-activates="nav-mobile"><img class="responsive-img" src="{% static 'images/svg/menu.svg' %}" alt=""></a>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div id="Login_Modal" class="modal">
+					<div class="modal-content">
+					<h4>Login</h4>
+						<div class="col s12">
+							<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                            <img id ="icon" src="{% static 'images/fb2.jpg' %}" />
+                            <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
+                            <img id ="icon2" src="{% static 'images/g+2.jpg' %}" /></a>      
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% block content %}{% endblock %}
+		<!--Import jQuery before materialize.js-->
+		<script src="{% static 'js/jquery-2.1.1.min.js'%}"></script>
+		<script src="{% static 'js/materialize.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
 	</body>
 </html>
