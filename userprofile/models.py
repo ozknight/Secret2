@@ -68,7 +68,7 @@ class Profile(models.Model):
             return True
         return False
 
-    def User_Created_A_Company(self):
+    def have_company(self):
         try:
             company = Company.objects.get(owner=self.user)
         except Company.DoesNotExist:

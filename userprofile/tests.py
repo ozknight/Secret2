@@ -81,12 +81,12 @@ class UserProfile_TestCase(TestCase):
         """test for employer without company"""
         user = Setup_User()
         profile = Profile(user=user, employer=True)
-        self.assertEquals(profile.User_Created_A_Company(), False)
+        self.assertEquals(profile.have_company(), False)
 
     def test_for_employer_with_company(self):
         """test for employer without company"""
         user = Setup_User()
         profile = Profile(user=user, employer=True)
-        self.assertEquals(profile.User_Created_A_Company(), False)
+        self.assertEquals(profile.have_company(), False)
         Company(owner=user).save()
-        self.assertEquals(profile.User_Created_A_Company(), True)
+        self.assertEquals(profile.have_company(), True)
