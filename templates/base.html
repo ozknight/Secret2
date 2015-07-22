@@ -11,10 +11,10 @@
 		{% if user.is_authenticated %}
 		<ul id="dropdown1" class="dropdown-content">
 			<li>
-				<a href="#!">Account</a>
+				<a href="/">Account</a>
 			</li>
-			<li>
-				<a href="">Profile</a>
+			<li {% if page_active and page_active == 'profile_view'%}class="active"{% endif %}>
+				<a href="{% url 'profile:view' %}">Profile</a>
 			</li>
 			<li class="divider"></li>
 			<li>
@@ -22,7 +22,7 @@
 			</li>
 		</ul>
 		{% endif %}		
-		<nav class="grey darken-2" role="navigation">
+		<nav class="{% if nav_color %}{{ nav_color }}{% else %}grey darken-2{% endif%}" role="navigation">
 			<div class="nav-wrapper">
 				<div class="valign-demo valign-wrapper left">
 					<a id="logo-container" href="{% url 'homepage' %}" class="brand-logo waves-effect waves-light">
@@ -40,7 +40,7 @@
 				<ul class="right hide-on-med-and-down">
 					{% if user.is_authenticated %}
 					<li>
-						<a class="dropdown-button" href="#!" data-activates="dropdown1" href="">
+						<a class="dropdown-button text-capitalize" href="#!" data-activates="dropdown1" href="">
 							{{ user.username|default:user.get_full_name }}
 						</a>
 					</li>

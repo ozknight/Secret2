@@ -4,7 +4,7 @@ from .views import ProfileUpdateView, ProfileDetailView, ProfileCreateView
 
 urlpatterns = (
     url(
-        r'^view/$',
+        r'^$',
         ProfileDetailView.as_view(),
         name='view'
     ),

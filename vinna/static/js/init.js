@@ -27,5 +27,9 @@
       selectYears: 90,
       format: 'mm/dd/yyyy'
     });
+    $('.tooltipped').tooltip({
+      delay: 50
+    });
+    $('.scrollspy').scrollSpy();
   });
 })(jQuery);

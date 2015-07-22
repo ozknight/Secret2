@@ -11,15 +11,18 @@ class ProfileDetailView(generic.TemplateView):
     template_name = 'Profile_Detail_View.html'
 
     def get_context_data(self, **kwargs):
+        if self.request.user.is_anonymous():
+            raise Http404('Not A User')
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        context['page_title'] = "Profile"
-        context['body_background'] = "green lighten-2"
+        context['page_title'] = self.request.user.first_name + "\'s Profile"
+        context['nav_color'] = "light-green darken-1"
+        context['page_active'] = 'profile_view'
         return context
 
 
 class ProfileUpdateView(generic.UpdateView):
     template_name = 'Profile_Update_View.html'
-    success_url = '/profile/view'
+    success_url = '/profile/'
 
 
 class ProfileCreateView(generic.UpdateView):
@@ -27,7 +30,7 @@ class ProfileCreateView(generic.UpdateView):
     model = Profile
     form_class = ProfileCreateForm
     template_name = 'Profile_Create_View.html'
-    success_url = '/profile/view/'
+    success_url = '/profile/'
 
     def get_context_data(self, **kwargs):
         context = super(ProfileCreateView, self).get_context_data(**kwargs)

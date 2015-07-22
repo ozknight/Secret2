@@ -22,3 +22,54 @@
 	margin: 0 auto;
 	margin-top: 15px;
 }
+
+.parallax-container{
+	height: 300px;
+	z-index: -1;
+}
+
+.text-capitalize{
+	text-transform: capitalize;
+}
+
+.profile-avatar{
+	position: relative;
+	display: inherit;
+	margin:0 auto;
+	width: 128px;
+	height: 128px;
+	border-radius: 100%;
+	background-color: rgba(255,255,255,.6);
+	border:1px solid rgba(255,255,255,.6);
+	transition: all 1s ease;
+	margin-top:-6%;
+}
+/* Large */
+@media only screen and (max-width : 993px){
+	.profile-avatar{
+		margin-top:-7%;
+	}
+}
+/* Meduim */
+@media only screen and (max-width : 600px){
+	.profile-avatar{
+		margin-top:-12%;
+	}
+}
+
+.profile-avatar:hover{
+	background-color: rgba(124,179,66,.6);
+	border:1px solid rgba(124,179,66,.6);
+}
+
+.username-content{
+	padding-top:0;
+}
+
+.username-content h5{
+	font-weight: 500;
+}
+
+.text-muted{
+	color: gray;
+}
