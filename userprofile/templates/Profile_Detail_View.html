@@ -14,8 +14,12 @@
 					<h5 class="text-center">
 						{{ user.get_full_name }}
 					</h5>
-					<h6 class="text-center text-muted">
-						Newbie
+					<h6 class="text-center text-muted text-capitalize">
+						{% if user.profile.is_employer %}
+						employer
+						{% else %}
+						newbie
+						{% endif%}
 					</h6>
 				</div>
 				<div class="section">

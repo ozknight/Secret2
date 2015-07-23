@@ -12,7 +12,7 @@ class ProfileDetailView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         if self.request.user.is_anonymous():
-            raise Http404('Not A User')
+            raise Http404('Please Login!')
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
         context['page_title'] = self.request.user.first_name + "\'s Profile"
         context['nav_color'] = "light-green darken-1"
@@ -33,6 +33,8 @@ class ProfileCreateView(generic.UpdateView):
     success_url = '/profile/'
 
     def get_context_data(self, **kwargs):
+        if self.request.user.is_anonymous():
+            raise Http404('Please Login!')
         context = super(ProfileCreateView, self).get_context_data(**kwargs)
         context['page_title'] = 'Setup Profile'
         context['body_background'] = "green lighten-2"
