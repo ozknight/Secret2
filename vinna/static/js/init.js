@@ -16,7 +16,7 @@
     $('.button-collapse').sideNav();
     $('.modal-trigger').leanModal();
     $(".dropdown-button").dropdown({
-    	constrain_width: false,
+    	constrain_width: true,
      	hover: false,
     });
     $('.materialboxed').materialbox();
