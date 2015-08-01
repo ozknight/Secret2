@@ -11,6 +11,14 @@ def Setup_User():
 
 class Company_TestCase(TestCase):
 
+    """Test Cases for Company Models"""
+    def test_for_getting_logo(self):
+        """Test Get Logo Url for New Company Without Logo"""
+        user = Setup_User()
+        company = Company(owner=user)
+        company.save()
+        self.assertEquals(company.get_logo(), 'static/comanythumbs/default.png')
+
     def test_new_company_status(self):
         """Test New Created Company"""
         user = Setup_User()

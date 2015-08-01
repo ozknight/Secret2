@@ -45,6 +45,11 @@ class Company(models.Model):
         auto_now_add=True
     )
 
+    def get_logo(self):
+        if self.logo:
+            return self.logo.url
+        return 'static/comanythumbs/default.png'
+
     def get_status(self):
         return self.status.get_status()
 
