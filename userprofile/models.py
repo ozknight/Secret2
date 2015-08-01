@@ -49,7 +49,7 @@ class Profile(models.Model):
         blank=True
     )
 
-    def get_verbose_gender(self):
+    def get_gender(self):
         if self.valid_gender():
             return_id=Valid_Gender.index(self.gender) + 1
             return Valid_Gender[return_id]
