@@ -8,7 +8,8 @@ class Company(models.Model):
     """Company model for Users who are Employeed"""
 
     owner = models.OneToOneField(
-        User
+        User,
+        related_name='company'
     )
     logo = models.ImageField(
         upload_to='images/companythumbs/'
@@ -71,7 +72,8 @@ class Company(models.Model):
 
 class CompanyStatus(models.Model):
     company = models.OneToOneField(
-        Company
+        Company,
+        related_name='status'
     )
     status = models.BooleanField(
         verbose_name='Status',

@@ -81,17 +81,10 @@ class Profile(models.Model):
 
     def have_company(self):
         try:
-            company = Company.objects.get(owner=self.user)
-        except Company.DoesNotExist:
+            company = self.user.company
+        except Exception:
             return False
         return True
-
-    def check_company(self):
-        try:
-            company = Company.objects.get(owner=self.user)
-        except ObjectDoesNotExist:
-            company = 'False'
-        return company
 
     def save(self, **kwargs):
         for field in self._meta.fields:
