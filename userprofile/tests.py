@@ -45,25 +45,25 @@ class UserProfile_TestCase(TestCase):
         """Test for Male Users"""
         user = Setup_User()
         profile = Profile(user=user, gender='M')
-        self.assertEquals(profile.is_gender_valid(), True)
+        self.assertEquals(profile.valid_gender(), True)
 
     def test_for_female_user(self):
         """Test for Female Users"""
         user = Setup_User()
         profile = Profile(user=user, gender='F')
-        self.assertEquals(profile.is_gender_valid(), True)
+        self.assertEquals(profile.valid_gender(), True)
 
     def test_for_not_valid_gender_user(self):
         """Test for Female Users"""
         user = Setup_User()
         profile = Profile(user=user, gender='D')
-        self.assertEquals(profile.is_gender_valid(), False)
+        self.assertEquals(profile.valid_gender(), False)
 
     def test_for_no_gender_user(self):
         """Test for No Gender Users"""
         user = Setup_User()
         profile = Profile(user=user)
-        self.assertEquals(profile.is_gender_valid(), False)
+        self.assertEquals(profile.valid_gender(), False)
 
     def test_for_male_gender_verbose_return(self):
         """Test For 'M' Gender returns Male"""

@@ -50,7 +50,7 @@ class Profile(models.Model):
     )
 
     def get_verbose_gender(self):
-        if self.is_gender_valid():
+        if self.valid_gender():
             return_id=Valid_Gender.index(self.gender) + 1
             return Valid_Gender[return_id]
         return 'Not A Human'
@@ -64,7 +64,7 @@ class Profile(models.Model):
         return self.employer
 
     def is_Profile_Set(self):
-        if self.is_gender_valid() and self.valid_age():
+        if self.valid_gender() and self.valid_age():
             return True
         return False
 
@@ -74,7 +74,7 @@ class Profile(models.Model):
         age = timezone.now().year - self.birthdate.year
         return age >= MIN_VALID_AGE
 
-    def is_gender_valid(self):
+    def valid_gender(self):
         if self.gender in Valid_Gender:
             return True
         return False
