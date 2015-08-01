@@ -77,6 +77,12 @@ class UserProfile_TestCase(TestCase):
         profile = Profile(user=user, gender='F')
         self.assertEquals(profile.get_verbose_gender(), 'Female')
 
+    def test_for_invalid_gender_verbose_return(self):
+        """Test For invalid Gender returns 'Not A Human'"""
+        user = Setup_User()
+        profile = Profile(user=user, gender='X')
+        self.assertEquals(profile.get_verbose_gender(), 'Not A Human')
+
     def test_for_user_not_employer(self):
         """test for employer without company"""
         user = Setup_User()
