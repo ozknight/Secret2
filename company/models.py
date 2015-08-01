@@ -5,8 +5,7 @@ from django.contrib.auth.models import User
 
 class Company(models.Model):
 
-    """Company model for Users who are Employeed"""
-
+    """Company model for Users who are currently Employed"""
     owner = models.OneToOneField(
         User,
         related_name='company'
@@ -47,13 +46,13 @@ class Company(models.Model):
     )
 
     def get_status(self):
-        return self.companystatus.status
+        return self.status.get_status()
 
     def approve(self):
-        companystatus = self.companystatus.status = True
+        companystatus = self.status.status = True
 
     def disallow(self):
-        companystatus = self.companystatus.status = False
+        companystatus = self.status.status = False
 
     def save(self, **kwargs):
         for field in self._meta.fields:
@@ -71,6 +70,8 @@ class Company(models.Model):
 
 
 class CompanyStatus(models.Model):
+
+    """Status Of A Company"""
     company = models.OneToOneField(
         Company,
         related_name='status'
@@ -79,6 +80,12 @@ class CompanyStatus(models.Model):
         verbose_name='Status',
         default=False
     )
+
+    def get_status(self):
+        return self.status
+
+    def __unicode__(self):
+        return self.get_status()
 
     def create_company_status(sender, instance, created, **kwargs):
         if created:
