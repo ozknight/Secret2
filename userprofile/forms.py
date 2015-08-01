@@ -21,6 +21,11 @@ class ProfileCreateForm(forms.ModelForm):
         )
     )
     birthdate = forms.DateTimeField(
+        label='Birthday',
+        error_messages={
+            'required': ("Please set Your Birthdate"),
+            'invalid': ("Invalid Birthdate")
+        },
         widget=forms.DateTimeInput(
             attrs={
                 'placeholder': 'mm/dd/yyyy',
@@ -30,16 +35,25 @@ class ProfileCreateForm(forms.ModelForm):
         )
     )
     gender = forms.ChoiceField(
-        choices=GENDER, widget=forms.Select(
+        error_messages={
+            'invalid': ("Invalid Gender")
+        },
+        choices=GENDER,
+        widget=forms.Select(
             attrs={
                 'placeholder': 'Select A Gender'
             }
         )
     )
     phone = forms.CharField(
+        error_messages={
+            'invalid': ("Invalid Phone Number")
+        },
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Phone Number'
+                'type': 'number',
+                'placeholder': 'Phone Number',
+                'maxlength': '15'
             }
         )
     )

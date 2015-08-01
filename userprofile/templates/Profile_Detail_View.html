@@ -9,7 +9,7 @@
 	<div class="section no-pad-bot" style="margin-top:-5%;">
 		<div class="row">
 			<div class="col offset-l1 l10 s12 white z-depth-2" style="padding:15px;">
-				<img class="profile-avatar tooltipped responsive-img" src="{% static 'images/material/user_sharper.png' %}" alt="{{ user.get_full_name }}'s Avatar" data-position="top" data-delay="50" data-tooltip="{{ user.get_full_name }}'s Avatar">
+				<img class="profile-avatar tooltipped responsive-img" src="{{ user.profile.get_avatar }}" alt="{{ user.get_full_name }}'s Avatar" data-position="top" data-delay="50" data-tooltip="{{ user.get_full_name }}'s Avatar">
 				<div class="section username-content">
 					<h5 class="text-center">
 						{{ user.get_full_name }}
