@@ -13,7 +13,7 @@ MIN_VALID_AGE = 15
 Valid_Gender = []
 for Gender in GENDER:
     Valid_Gender.append(Gender[0])
-    Valid_Gender.sort()
+    Valid_Gender.append(Gender[1])
 
 
 class Profile(models.Model):
@@ -48,6 +48,17 @@ class Profile(models.Model):
         default=False,
         blank=True
     )
+
+    def get_verbose_gender(self):
+        if self.is_gender_valid():
+            return_id=Valid_Gender.index(self.gender) + 1
+            return Valid_Gender[return_id]
+        return 'Not A Human'
+
+    def get_avatar(self):
+        if self.avatar:
+            return self.avatar.url
+        return '/static/images/userthumbs/default.png'
 
     def is_employer(self):
         return self.employer

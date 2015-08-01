@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('avatar', models.ImageField(upload_to=b'images/userthumbs/', blank=True)),
-                ('birthdate', models.DateField(blank=True)),
+                ('birthdate', models.DateField(null=True, blank=True)),
                 ('gender', models.CharField(blank=True, max_length=1, choices=[(b'M', b'Male'), (b'F', b'Female')])),
                 ('phone', models.CharField(max_length=16, verbose_name=b'Contact #:', blank=True)),
                 ('about_you', models.TextField(verbose_name=b'About You :', blank=True)),

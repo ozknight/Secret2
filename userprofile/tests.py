@@ -65,6 +65,18 @@ class UserProfile_TestCase(TestCase):
         profile = Profile(user=user)
         self.assertEquals(profile.is_gender_valid(), False)
 
+    def test_for_male_gender_verbose_return(self):
+        """Test For 'M' Gender returns Male"""
+        user = Setup_User()
+        profile = Profile(user=user, gender='M')
+        self.assertEquals(profile.get_verbose_gender(), 'Male')
+
+    def test_for_female_gender_verbose_return(self):
+        """Test For 'F' Gender returns Female"""
+        user = Setup_User()
+        profile = Profile(user=user, gender='F')
+        self.assertEquals(profile.get_verbose_gender(), 'Female')
+
     def test_for_user_not_employer(self):
         """test for employer without company"""
         user = Setup_User()

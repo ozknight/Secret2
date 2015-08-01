@@ -10,11 +10,11 @@
 						<i class="mdi-action-account-circle prefix"></i>
 						Profile
 					</span>
-					<br/>
+					<br/><!-- 
 					<label class="active" for="first_name">First Name</label>
 					<input id="first_name" type="text" value="{{ user.first_name }}" class="validate" disabled>
 					<label class="active" for="last_name">First Name</label>
-					<input id="last_name" type="text" value="{{ user.last_name }}" class="validate" disabled>
+					<input id="last_name" type="text" value="{{ user.last_name }}" class="validate" disabled> -->
 					<form action="" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					{{ form.as_p }}
