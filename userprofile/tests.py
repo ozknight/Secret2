@@ -19,27 +19,27 @@ class UserProfile_TestCase(TestCase):
         """Test For Underage Users"""
         user = Setup_User()
         profile = Profile(user=user, birthdate=datetime.date.today())
-        self.assertEquals(profile.is_valid_user_age(), False)
+        self.assertEquals(profile.valid_age(), False)
 
     def test_for_age_equals_standard(self):
         """Test For Users With Valid Age Level"""
         user = Setup_User()
         age = datetime.date.today() - Fiftheen_Year
         profile = Profile(user=user, birthdate=age)
-        self.assertEquals(profile.is_valid_user_age(), True)
+        self.assertEquals(profile.valid_age(), True)
 
     def test_for_age_above_standard(self):
         """Test For Users With Above Valid Age Level"""
         user = Setup_User()
         age = datetime.date.today() - (Fiftheen_Year * 2)
         profile = Profile(user=user, birthdate=age)
-        self.assertEquals(profile.is_valid_user_age(), True)
+        self.assertEquals(profile.valid_age(), True)
 
     def test_for_no_age(self):
         """Test For Users With No Age"""
         user = Setup_User()
         profile = Profile(user=user)
-        self.assertEquals(profile.is_valid_user_age(), False)
+        self.assertEquals(profile.valid_age(), False)
 
     def test_for_male_user(self):
         """Test for Male Users"""
@@ -60,7 +60,7 @@ class UserProfile_TestCase(TestCase):
         self.assertEquals(profile.is_gender_valid(), False)
 
     def test_for_no_gender_user(self):
-        """Test for Female Users"""
+        """Test for No Gender Users"""
         user = Setup_User()
         profile = Profile(user=user)
         self.assertEquals(profile.is_gender_valid(), False)

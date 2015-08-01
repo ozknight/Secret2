@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models
 from company.models import Company
 from django.utils import timezone
@@ -64,11 +64,11 @@ class Profile(models.Model):
         return self.employer
 
     def is_Profile_Set(self):
-        if self.is_gender_valid() and self.is_valid_user_age():
+        if self.is_gender_valid() and self.valid_age():
             return True
         return False
 
-    def is_valid_user_age(self):
+    def valid_age(self):
         if not self.birthdate:
             return False
         age = timezone.now().year - self.birthdate.year
@@ -102,6 +102,10 @@ class Profile(models.Model):
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
+
+    def clean(self):
+        if not self.valid_age():
+            raise ValidationError({'birthdate': ['Underage Applicant!']})
 
     def __unicode__(self):
         return self.user.username + "\'s Profile"
