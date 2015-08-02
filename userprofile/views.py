@@ -1,6 +1,4 @@
 from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.shortcuts import render
 from django.views import generic
 from django.http import Http404
 from .forms import ProfileCreateForm
@@ -14,7 +12,9 @@ class ProfileDetailView(generic.TemplateView):
         if self.request.user.is_anonymous():
             raise Http404('Please Login!')
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        context['page_title'] = self.request.user.first_name + "\'s Profile"
+        context['page_title'] = "%s\'s Profile" % (
+            self.request.user.first_name.capitalize()
+        )
         context['nav_color'] = "light-green darken-1"
         context['page_active'] = 'profile_view'
         return context
