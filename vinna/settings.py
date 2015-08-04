@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'userprofile',
     'company',
     'job',
+    'notification',
 )
 
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
