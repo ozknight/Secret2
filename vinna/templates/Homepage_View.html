@@ -9,13 +9,42 @@
 		</div>
 	</div>
 	{% else %}
-	<div class="container">
+	<div class="had-container green lighten-2" style="padding:5% 0;">
 		<div class="row">
-			<div class="col m6">
-				<img class="responsive-img" src="{% static 'images/logo3.png' %}" />
+			<div class="col s12 l6">
+				<img class="responsive-img center" src="{% static 'images/logo3.png' %}" />
 			</div>
-			<div class="col m6"></div>
+			<div class="col s12 l6">
+				<h1><b>Smile, You've Found Us</b></h1>
+				<p class="lead text-white">
+					Hiring people, hassle free. Upload video, send resume, and choose company you want to apply.</p>
+			</div>
 		</div>
 	</div>
+	<div class="had-container white" style="padding:5% 0;">
+          <div id ="about"class="row center">
+            <div class="col s12 l4">
+              <img class="img-circle responsive-img" src="{% static 'images/marketing/mobile.png' %}" alt="Generic placeholder image">
+              <h2>Mobile Access</h2>
+              <p>
+                Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+              </p>
+            </div>
+            <div class="col s12 l4">
+                <img class="img-circle responsive-img" src="{% static 'images/marketing/time.png' %}" alt="Generic placeholder image">
+                <h2>Hassle Free</h2>
+                <p>
+                  Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
+                </p>
+            </div>
+            <div class="col s12 l4">
+				<img class="img-circle responsive-img" src="{% static 'images/marketing/click.png' %}" alt="Generic placeholder image">
+				<h2>One Click</h2>
+				<p>
+					Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+				</p>
+            </div>
+          </div>
+        </div>
 	{% endif %}
 {% endblock %}

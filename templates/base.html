@@ -39,7 +39,7 @@
 		{% endif %}
 		{% endif %}		
 		<nav class="{% if nav_color %}{{ nav_color }}{% else %}grey darken-2{% endif%}" role="navigation">
-			<div class="nav-wrapper">
+			<div class="nav-wrapper z-depth-1">
 				<div class="valign-demo valign-wrapper left">
 					<a id="logo-container" href="{% url 'homepage' %}" class="brand-logo waves-effect waves-light">
 					<div class="hide-on-med-and-down">
@@ -73,8 +73,8 @@
 						<a href="{% url 'homepage' %}">Home</a>
 					</li>
 					{% endif %}
-					<li>
-						<a href="">Job Offers</a>
+					<li {% if page_active and page_active == 'job'%}class="active"{% endif %}>
+						<a href="{% url 'job:home' %}">Job Offers</a>
 					</li>
 					<li>
 						<a href="">Help</a>
@@ -129,6 +129,17 @@
 	          <div class="footer-copyright">
 	            <div class="container">
 	            © 2015 Copyright Vinna
+		            <div class="right">
+		            	<a href="#" class="socials-holder">
+		                	<img class="responsive-img" src="{% static 'images/socials/facebook.png' %}" alt="facebook Social" class="socials">
+			            </a>
+			            <a href="#" class="socials-holder">
+			            	<img class="responsive-img" src="{% static 'images/socials/twitter.png' %}" alt="Twitter Social" class="socials">
+			            </a>
+			            <a href="#" class="socials-holder">
+			            	<img class="responsive-img" src="{% static 'images/socials/google.png' %}" alt="Google Social" class="socials">
+			            </a>
+		            </div>
 	           	</div>
 	          </div>
 	        </footer>

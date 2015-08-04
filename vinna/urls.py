@@ -34,6 +34,13 @@ urlpatterns = patterns(
         )
     ),
     url(
+        r'^(?i)job/',
+        include(
+            'job.urls',
+            namespace='job'
+        )
+    ),
+    url(
         r'^admin/',
         include(
             admin.site.urls
